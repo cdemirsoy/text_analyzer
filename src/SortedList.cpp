@@ -3,11 +3,10 @@
 #include <map>
 #include <queue>
 #include <vector>
+#include <forward_list>
+#include <boost/algorithm/string.hpp>
 #include "include/SortedList.hpp"
-#include<forward_list>
 
-
-#include<boost/algorithm/string.hpp>
 using namespace std;
 using namespace boost;
 
@@ -19,7 +18,7 @@ SortedList::SortedList(int numOccurences) : capacity(numOccurences){
     cout << "constructing list of "<< numOccurences << endl;
 }
 
-void SortedList::addToList(std::pair <string, int> x) {
+void SortedList::addToList(std::pair<string,int> x) {
         
     if (list.empty()){
         list.push_front(x);
@@ -30,18 +29,16 @@ void SortedList::addToList(std::pair <string, int> x) {
     modifyDuplicateEntry(x);
         
     return;
-        
 }
     
 void SortedList::printList() {
-   
     for (auto& pair : list)
         cout << "Pairs: " << pair.first << "\t" << pair.second << endl;
-
 }
+
  
         
-void SortedList::modifyDuplicateEntry(std::pair <string, int> x){
+void SortedList::modifyDuplicateEntry(std::pair<string,int> x){
 
     bool isEligible = x.second > list.begin()->second ? true : false;
     for (iterator = list.begin(); iterator != list.end(); ++iterator) {

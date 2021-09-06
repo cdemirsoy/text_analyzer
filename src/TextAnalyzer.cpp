@@ -4,90 +4,66 @@
 #include <map>
 #include <queue>
 #include <vector>
+#include <forward_list>
+#include <boost/algorithm/string.hpp>
 #include "include/TextAnalyzer.hpp"
 #include "include/SortedList.hpp"
 
-#include <forward_list>
-
-
-#include <boost/algorithm/string.hpp>
 using namespace std;
 using namespace boost;
 
-
-
-TextAnalyzer::TextAnalyzer(const string& fileName, unsigned int numWords) noexcept(false) : fileName(fileName), numOccurences(numWords), myList(numWords) {
-    //fileStream.open(fileName, ifstream::in);
+TextAnalyzer::TextAnalyzer(const string& fileName, const unsigned int numWords, const string outputFormat) noexcept(false) : fileName(fileName), 
+    numOccurences(numWords), myList(numWords), outputFormat(outputFormat) {
     std::cout << "Constructing\n";
 }
 
-
 void TextAnalyzer::procesText() {
 
-        fileStream.open(fileName, ifstream::in);
+    string line;
+    fileStream.open(fileName, ifstream::in);
 
-        if (fileStream.is_open()) {
-            string line;
-
-            while (fileStream.good()) {
-               string line;
-                while(getline(fileStream, line)) {
-                    columnNumber = 0;
-                    //cout << "line: " << line << endl;
-                    stringstream ls ( line );
-                    string word;   
+    if (fileStream.is_open()) {
+        while(fileStream.good() && getline(fileStream, line)) {
+            columnNumber = 0;
+            stringstream ls(line);
                     
-                    while(ls >> currentWord) {
-                
-                        //fileStream >> currentWord;
-                         //cout << "word: " << currentWord << endl;
-                        if (isSmiley(line, currentWord)) {
-                            //cout << "smiley found\n";
-                        }
+            while(ls >> currentWord) {
 
-                        else {
-                            currentWord = sanitize(currentWord);
-                            if (currentWord.length()==0)
-                                continue;
-                            //cout << "word: " << currentWord << endl;
+                if (!isSmiley(line, currentWord)) {
+                    currentWord = sanitize(currentWord);
+                    if (currentWord.length()==0)
+                        continue;
                 
-                            if (wordMap.find(currentWord) == wordMap.end()) 
-                                wordMap[currentWord] = 1; 
-                            else {
-                                wordMap[currentWord]++;
-                      
-                            }
-                            //cout << "current instance: " << currentWord << ", " << wordMap[currentWord] << endl;
-                            myList.addToList(std::make_pair(currentWord, wordMap[currentWord]));
-                        }
-                       
+                    if (wordMap.find(currentWord) == wordMap.end()) 
+                        wordMap[currentWord] = 1; 
+                    else {
+                        wordMap[currentWord]++;
                     }
-                    numOfSmileyInLine = 0;
-                    prevColumn = 0;
-                    lineNumber++;
-                }
+                    myList.addToList(std::make_pair(currentWord, wordMap[currentWord]));
+                }       
             }
-
-   
-
+            numOfSmileyInLine = 0;
+            prevColumn = 0;
+            lineNumber++;
         }
-        else  // We couldn't open the file. Report the error in the error stream.
-        {
-            cerr << "Couldn't open the file." << endl;
-            //return -1;
-        }
+        fileStream.close();
+    }
+    else 
+    {
+        cerr << "Couldn't open the file." << endl;
+        return;
+    }
 }
     
 void TextAnalyzer::printText(){ 
-        myList.printList();
+
+    myList.printList();
 }
 
 void TextAnalyzer::printSmileys(){        
-        for (auto a : smileyPositions)
-            cout << "row: " << a.first << " col: " << a.second << endl;
+    for (auto a : smileyPositions)
+        cout << "row: " << a.first << " col: " << a.second << endl;
 }
-    
-
 
 string TextAnalyzer::sanitize(string& toSanitize) {
     algorithm::to_lower(toSanitize);
@@ -104,19 +80,18 @@ string TextAnalyzer::sanitize(string& toSanitize) {
 bool TextAnalyzer::isSmiley (string& line, string currentString) {
     
     if (currentString[0] == ':') {
-        cout << "line beg: " << line << endl;
+        //cout << "line beg: " << line << endl;
         unsigned int currentColumn = line.find(':');
-        cout << "curcol: " << currentColumn << endl;
+        //cout << "curcol: " << currentColumn << endl;
         unsigned int currentPos = currentColumn+numOfSmileyInLine+1;
         smileyPositions.push_back(std::make_pair(lineNumber, currentPos));
         //cout << "to erase " << currentColumn << endl;
         line.erase(currentColumn, 1);
-        cout << "line end: " << line << endl;
+        //cout << "line end: " << line << endl;
 
         numOfSmileyInLine++;
         return true;
     }
     else 
         return false;
-
 }

@@ -7,6 +7,7 @@
 
 using namespace std;
 
+
 static void show_usage(std::string name)
 {
     std::cerr << "Usage: " << name << " <option(s)> --filename NameOfTheFile --filepath PathOfTheFile --outputformat OutputFormat\n"

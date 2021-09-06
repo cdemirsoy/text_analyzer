@@ -23,7 +23,8 @@ int main(int argc, char* argv[]) {
         return 1;
     }
    
-    TextAnalyzer textAnalyzer(filePath, numWords);
+    TextAnalyzer textAnalyzer(filePath, numWords, outputFormat);
+
     executeAnalysis(textAnalyzer);
 
     return 0;

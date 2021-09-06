@@ -9,7 +9,7 @@
 class TextAnalyzer {
 
 public:
-    TextAnalyzer(const std::string& fileName, unsigned int numWords);
+    TextAnalyzer(const std::string& fileName, const unsigned int numWords, const std::string outputFormat);
     void procesText();  
     void printText();
     void printSmileys();
@@ -24,6 +24,7 @@ private:
     std::vector <std::pair<int, int>> smileyPositions;
     std::string fileName;
     std::string currentWord;
+    std::string outputFormat;
     std::map<std::string, int> wordMap;
     SortedList myList;
 
