@@ -15,7 +15,9 @@ bool cmp_fun(std::pair<string,int> a, std::pair<string,int> b) {
    return a.second < b.second;
 }
 
-SortedList::SortedList() {}
+SortedList::SortedList(int numOccurences) : capacity(numOccurences){
+    cout << "constructing list of "<< numOccurences << endl;
+}
 
 void SortedList::addToList(std::pair <string, int> x) {
         

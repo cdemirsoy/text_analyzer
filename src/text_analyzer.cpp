@@ -5,6 +5,7 @@
 #include <queue>
 #include <vector>
 #include "include/TextAnalyzer.hpp"
+#include "include/SortedList.hpp"
 
 #include <forward_list>
 
@@ -15,7 +16,7 @@ using namespace boost;
 
 
 
-TextAnalyzer::TextAnalyzer(const string& fileName) noexcept(false) : fileName(fileName) {
+TextAnalyzer::TextAnalyzer(const string& fileName, unsigned int numWords) noexcept(false) : fileName(fileName), numOccurences(numWords), myList(numWords) {
     //fileStream.open(fileName, ifstream::in);
     std::cout << "Constructing\n";
 }
@@ -57,9 +58,7 @@ void TextAnalyzer::procesText() {
                       
                             }
                             //cout << "current instance: " << currentWord << ", " << wordMap[currentWord] << endl;
-                            myList.addToList(
-                                std::make_pair(currentWord, wordMap[currentWord])   
-                                );
+                            myList.addToList(std::make_pair(currentWord, wordMap[currentWord]));
                         }
                        
                     }

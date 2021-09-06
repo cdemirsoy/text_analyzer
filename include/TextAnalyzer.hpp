@@ -9,7 +9,7 @@
 class TextAnalyzer {
 
 public:
-    TextAnalyzer(const std::string& fileName);
+    TextAnalyzer(const std::string& fileName, unsigned int numWords);
     void procesText();  
     void printText();
     void printSmileys();
@@ -20,6 +20,7 @@ private:
     unsigned int columnNumber=1;
     unsigned int prevColumn=0;
     unsigned int numOfSmileyInLine = 0;
+    unsigned int numOccurences;
     std::vector <std::pair<int, int>> smileyPositions;
     std::string fileName;
     std::string currentWord;
