@@ -2,6 +2,7 @@
 #include <fstream>
 #include "TextAnalyzer.hpp"
 #include <string>
+#include "string.h"
 using namespace std;
 
 

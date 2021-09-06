@@ -10,6 +10,8 @@ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
 set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR})
 
 # The following folder will be included
-include_directories("${PROJECT_SOURCE_DIR}")
 include_directories(src)
-add_executable(cmake_hello src/main.cpp)
+include_directories(include)
+file(GLOB SOURCES "src/*.cpp")
+include_directories(${PROJECT_SOURCE_DIR})
+add_executable(cmake_hello src/main.cpp src/sorted_list.cpp src/text_analyzer.cpp)
