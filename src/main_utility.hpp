@@ -56,7 +56,7 @@ static int parse_arguments(int argc, char* argv[], string& filePath, string& out
             if (i + 1 < argc) 
                 numWords = stoi(argv[++i]);
             else {
-                std::cerr << "--outputformat option requires one argument." << std::endl;
+                std::cerr << "--numwords option requires one argument." << std::endl;
                 return 0;
             }  
         }
@@ -69,4 +69,15 @@ static void executeAnalysis(TextAnalyzer& textAnalyzer) {
     textAnalyzer.procesText();
     textAnalyzer.printText();
     textAnalyzer.printSmileys();
+}
+
+static int checkInputFile (string filePath) {
+    ifstream myFile(filePath, ifstream::in);
+
+    while (myFile.fail()) {
+        return 0;
+    }
+
+    myFile.close();
+    return 1;
 }
