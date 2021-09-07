@@ -19,12 +19,12 @@ TextAnalyzer::TextAnalyzer(const Arguments& cmdArguments) : numWords(cmdArgument
 
 void TextAnalyzer::procesText() {
 
-    string line;
+    string line, currentWord;
+
     fileStream.open(fileName, ifstream::in);
 
     if (fileStream.is_open()) {
         while(fileStream.good() && getline(fileStream, line)) {
-            columnNumber = 0;
             stringstream ls(line);
                     
             while(ls >> currentWord) {
@@ -43,7 +43,6 @@ void TextAnalyzer::procesText() {
                 }       
             }
             numOfSmileyInLine = 0;
-            prevColumn = 0;
             lineNumber++;
         }
         fileStream.close();
