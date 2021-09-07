@@ -61,7 +61,7 @@ void TextAnalyzer::printText() const{
         cout << "printing to console\n";
         myList.printListConsole();
     }
-    else if (!outputFormat.compare("text")){
+    else if (!outputFormat.compare("txt")){
         cout << "printing to txt\n";
         myList.printListText();
     }

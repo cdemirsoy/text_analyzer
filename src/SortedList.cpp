@@ -11,6 +11,7 @@ using namespace std;
 using namespace boost;
 
 bool cmp_fun(std::pair<std::string, unsigned int> a, std::pair<std::string, unsigned int> b) {
+
     if (a.second !=  b.second)
         return a.second < b.second;
     else
@@ -33,8 +34,9 @@ void SortedList::addToList(std::pair<string, unsigned int> occurencePair) {
 }
     
 void SortedList::printListConsole() const{
-    for (auto& pair : list)
-        cout << "Pairs: " << pair.first << "\t" << pair.second << endl;
+    cout << "Occurence list:" << endl;
+    for (const auto& pair : list)
+        cout << "  " << pair.first << "\t" << pair.second << endl;
 }
 
 void SortedList::printListText() const{
@@ -42,11 +44,15 @@ void SortedList::printListText() const{
     outputFile.open("analysis.txt", ofstream::out);
 
     if (outputFile.is_open()) { 
-        for (auto& pair : list)
-            outputFile << "Pairs: " << pair.first << "\t" << pair.second << endl;
+        outputFile << "Occurence list:" << endl;
+        for (const auto& pair : list)
+            outputFile << "  " << pair.first << "\t" << pair.second << endl;
 
+        outputFile.close();
     }
-    outputFile.close();
+    else {
+        cout << "Could create a text file" << endl;
+    }
 
 }
 
@@ -55,20 +61,20 @@ void SortedList::printListXML() const{
     outputFile.open("analysis.xml", ofstream::out);
     unsigned int rank = size;
     if (outputFile.is_open()) { 
+        
+        outputFile << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" << endl; 
         outputFile << "<occurences>" << endl; 
 
-        for (auto& pair : list) {
+        for (const auto& pair : list) {
             outputFile << "\t<rank id="<< rank-- <<">" << endl;  
             outputFile << "\t\t<word>" << pair.first << "</word>" << endl;
             outputFile << "\t\t<frequency>" << pair.second << "</frequency>" << endl;  
         }
         outputFile << "</occurences>" << endl;  
+        outputFile.close();
     }
-    outputFile.close();
 }
 
- 
-        
 void SortedList::modifyList(std::pair<string, unsigned int> occurencePair){
 
     bool isEligible = occurencePair.second > list.begin()->second ? true : false;

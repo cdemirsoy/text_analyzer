@@ -45,12 +45,12 @@ int parse_arguments(const int& argc, char* argv[], Arguments& cmdArguments){
             if (i + 1 < argc) {
                 ++i;
 
-                if (strcmp(argv[i], "xml") != 0 || strcmp(argv[i], "txt") != 0 || 
+                if (strcmp(argv[i], "xml") != 0 && strcmp(argv[i], "txt") != 0 && 
                     strcmp(argv[i], "cmd") != 0) {
-                        cout << "Unsupported output format, using the default format as cmd." << endl;
+                        cout << "Unsupported output format: " << argv[i] << ", using the default format as cmd." << endl;
                 }
                 else {
-                    cmdArguments.filePath = argv[i];
+                    cmdArguments.outputFormat = argv[i];
                 }
             }
             else {
