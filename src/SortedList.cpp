@@ -10,25 +10,26 @@
 using namespace std;
 using namespace boost;
 
-bool cmp_fun(std::pair<string,int> a, std::pair<string,int> b) {
-   return a.second < b.second;
+bool cmp_fun(std::pair<std::string, unsigned int> a, std::pair<std::string, unsigned int> b) {
+    if (a.second !=  b.second)
+        return a.second < b.second;
+    else
+        return a.first < b.first;
 }
 
 SortedList::SortedList(unsigned int numWords) : capacity(numWords){
     cout << "constructing list of "<< numWords << endl;
 }
 
-void SortedList::addToList(std::pair<string, unsigned int> x) {
+void SortedList::addToList(std::pair<string, unsigned int> occurencePair) {
         
     if (list.empty()){
-        list.push_front(x);
+        list.push_front(occurencePair);
         size++;
-        return;
     }
-        
-    modifyList(x);
-        
-    return;
+    else {
+        modifyList(occurencePair);
+    }
 }
     
 void SortedList::printListConsole() const{
@@ -68,20 +69,22 @@ void SortedList::printListXML() const{
 
  
         
-void SortedList::modifyList(std::pair<string, unsigned int> x){
+void SortedList::modifyList(std::pair<string, unsigned int> occurencePair){
 
-    bool isEligible = x.second > list.begin()->second ? true : false;
+    bool isEligible = occurencePair.second > list.begin()->second ? true : false;
+    std::forward_list<std::pair<std::string, unsigned int>>::iterator iterator;      
+
     for (iterator = list.begin(); iterator != list.end(); ++iterator) {
                 
-        if (iterator->first == x.first){
-            iterator->second = x.second;
+        if (iterator->first == occurencePair.first){
+            iterator->second = occurencePair.second;
             list.sort(cmp_fun);
             return;
         }
     }
             
     if (isEligible || size < capacity) {
-        list.push_front(x);
+        list.push_front(occurencePair);
         list.sort(cmp_fun);
         if (++size > capacity) {
             list.pop_front();
