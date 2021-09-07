@@ -35,6 +35,7 @@ void SortedList::addToList(std::pair<string, unsigned int> occurencePair) {
     
 void SortedList::printListConsole() const{
     cout << "Occurence list:" << endl;
+    
     for (const auto& pair : list)
         cout << "  " << pair.first << "\t" << pair.second << endl;
 }
@@ -44,7 +45,9 @@ void SortedList::printListText() const{
     outputFile.open("analysis.txt", ofstream::out);
 
     if (outputFile.is_open()) { 
+
         outputFile << "Occurence list:" << endl;
+
         for (const auto& pair : list)
             outputFile << "  " << pair.first << "\t" << pair.second << endl;
 
@@ -60,6 +63,7 @@ void SortedList::printListXML() const{
     ofstream outputFile;
     outputFile.open("analysis.xml", ofstream::out);
     unsigned int rank = size;
+
     if (outputFile.is_open()) { 
         
         outputFile << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" << endl; 
@@ -70,6 +74,7 @@ void SortedList::printListXML() const{
             outputFile << "\t\t<word>" << pair.first << "</word>" << endl;
             outputFile << "\t\t<frequency>" << pair.second << "</frequency>" << endl;  
         }
+
         outputFile << "</occurences>" << endl;  
         outputFile.close();
     }
@@ -95,8 +100,7 @@ void SortedList::modifyList(std::pair<string, unsigned int> occurencePair){
         if (++size > capacity) {
             list.pop_front();
             size--;
-        }
-                    
+        }         
     }
 }
 
