@@ -6,7 +6,10 @@ class SortedList {
 public:
     SortedList(int numOccurences);
     void addToList(std::pair<std::string, int> x);
-    void printList();
+    void printListConsole();
+    void printListText();
+    void printListXML();
+
 
 private:
     const int capacity;

@@ -31,9 +31,43 @@ void SortedList::addToList(std::pair<string,int> x) {
     return;
 }
     
-void SortedList::printList() {
+void SortedList::printListConsole() {
+    list.reverse();
     for (auto& pair : list)
         cout << "Pairs: " << pair.first << "\t" << pair.second << endl;
+}
+
+void SortedList::printListText() {
+    list.reverse();
+    ofstream outputFile;
+    outputFile.open("analysis.txt", ofstream::out);
+
+    if (outputFile.is_open()) { 
+        for (auto& pair : list)
+            outputFile << "Pairs: " << pair.first << "\t" << pair.second << endl;
+
+    }
+    outputFile.close();
+
+}
+
+void SortedList::printListXML() {
+    list.reverse();
+    ofstream outputFile;
+    outputFile.open("analysis.xml", ofstream::out);
+    unsigned int rank = size;
+    if (outputFile.is_open()) { 
+        outputFile << "<occurences>" << endl; 
+
+        for (auto& pair : list) {
+            outputFile << "\t<rank id="<< rank-- <<">" << endl;  
+            outputFile << "\t\t<word>" << pair.first << "</word>" << endl;
+            outputFile << "\t\t<frequency>" << pair.second << "</frequency>" << endl;  
+        }
+        outputFile << "</occurences>" << endl;  
+    }
+    outputFile.close();
+
 }
 
  

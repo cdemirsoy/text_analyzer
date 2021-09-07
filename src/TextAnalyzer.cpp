@@ -56,8 +56,23 @@ void TextAnalyzer::procesText() {
 }
     
 void TextAnalyzer::printText(){ 
+    cout << "printtext called\n";
+    if (!outputFormat.compare("cmd")){
+        cout << "printing to console\n";
+        myList.printListConsole();
+    }
+    else if (!outputFormat.compare("text")){
+        cout << "printing to txt\n";
+        myList.printListText();
+    }
+    else if (!outputFormat.compare("xml")){
+        cout << "printing to xml\n";
+        myList.printListXML();
+    }
+    else {
+        cout << "unsupported outputFormat\n";
+    }
 
-    myList.printList();
 }
 
 void TextAnalyzer::printSmileys(){        
