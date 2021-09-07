@@ -92,7 +92,7 @@ string TextAnalyzer::sanitize(string& toSanitize) const {
     return sanitized;
 }
 
-bool TextAnalyzer::isSmiley (string& line, string currentString) {
+bool TextAnalyzer::isSmiley (string& line, const string& currentString) {
     
     if (currentString[0] == ':') {
         //cout << "line beg: " << line << endl;

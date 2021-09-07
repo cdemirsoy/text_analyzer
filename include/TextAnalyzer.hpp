@@ -6,10 +6,7 @@
 #include "include/SortedList.hpp"
 
 /**
- * Structure that contains parsed command line arguments.
- * 
- * 
- * - ::processText:
+ * Structure that contains the parsed command line arguments.
  * 
  */
 struct Arguments {
@@ -20,6 +17,10 @@ struct Arguments {
 
 /**
  * Class that encapsulates the intended text analysis.
+ *  
+ * * ::processText: Utility to open the file and to parse the words to count into the occurence list, as well as the smiley positions.
+ * *   File is read line by line, and then the individual words within a line checked whether it is a word or smiley. If a smiley, 
+ * *   position of the smiley is saved into the list. If word is not a smiley and a valid word, it is added to the list.
  * 
  */
 class TextAnalyzer final {
@@ -29,7 +30,6 @@ public:
     void procesText();
     void printSmileys() const;  
     void printText()    const;
-    
     
 private:
     unsigned int lineNumber{1U};
@@ -45,5 +45,5 @@ private:
     std::ifstream fileStream;
 
     std::string sanitize(std::string& toSanitize) const;
-    bool isSmiley (std::string& line, std::string currentString);
+    bool isSmiley (std::string& line, const std::string& currentString);
 };
