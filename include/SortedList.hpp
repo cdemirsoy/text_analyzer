@@ -6,9 +6,10 @@ class SortedList {
 public:
     SortedList(unsigned int numOccurences);
     void addToList(std::pair<std::string, int> x);
-    void printListConsole();
-    void printListText();
-    void printListXML();
+    void printListConsole() const;
+    void printListText() const;
+    void printListXML() const;
+    void reverseList();
 
 
 private:

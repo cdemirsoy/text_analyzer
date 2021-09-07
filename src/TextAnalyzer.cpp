@@ -12,7 +12,7 @@
 using namespace std;
 using namespace boost;
 
-TextAnalyzer::TextAnalyzer(const Arguments& cmdArguments) : numOccurences(cmdArguments.numWords), fileName(cmdArguments.filePath), 
+TextAnalyzer::TextAnalyzer(const Arguments& cmdArguments) : numWords(cmdArguments.numWords), fileName(cmdArguments.filePath), 
     outputFormat(cmdArguments.outputFormat), myList(cmdArguments.numWords) {
     std::cout << "Constructing\n";
 }
@@ -47,6 +47,7 @@ void TextAnalyzer::procesText() {
             lineNumber++;
         }
         fileStream.close();
+        myList.reverseList();
     }
     else 
     {
@@ -55,7 +56,7 @@ void TextAnalyzer::procesText() {
     }
 }
     
-void TextAnalyzer::printText(){ 
+void TextAnalyzer::printText() const{ 
     cout << "printtext called\n";
     if (!outputFormat.compare("cmd")){
         cout << "printing to console\n";
@@ -75,12 +76,12 @@ void TextAnalyzer::printText(){
 
 }
 
-void TextAnalyzer::printSmileys(){        
+void TextAnalyzer::printSmileys() const{        
     for (auto a : smileyPositions)
         cout << "row: " << a.first << " col: " << a.second << endl;
 }
 
-string TextAnalyzer::sanitize(string& toSanitize) {
+string TextAnalyzer::sanitize(string& toSanitize) const {
     algorithm::to_lower(toSanitize);
     string sanitized = "";
     for (auto& ch : toSanitize){

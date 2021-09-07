@@ -31,14 +31,12 @@ void SortedList::addToList(std::pair<string,int> x) {
     return;
 }
     
-void SortedList::printListConsole() {
-    list.reverse();
+void SortedList::printListConsole() const{
     for (auto& pair : list)
         cout << "Pairs: " << pair.first << "\t" << pair.second << endl;
 }
 
-void SortedList::printListText() {
-    list.reverse();
+void SortedList::printListText() const{
     ofstream outputFile;
     outputFile.open("analysis.txt", ofstream::out);
 
@@ -51,8 +49,7 @@ void SortedList::printListText() {
 
 }
 
-void SortedList::printListXML() {
-    list.reverse();
+void SortedList::printListXML() const{
     ofstream outputFile;
     outputFile.open("analysis.xml", ofstream::out);
     unsigned int rank = size;
@@ -92,4 +89,8 @@ void SortedList::modifyDuplicateEntry(std::pair<string,int> x){
         }
                     
     }
+}
+
+void SortedList::reverseList(){
+    list.reverse();
 }
