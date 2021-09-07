@@ -14,11 +14,11 @@ bool cmp_fun(std::pair<string,int> a, std::pair<string,int> b) {
    return a.second < b.second;
 }
 
-SortedList::SortedList(unsigned int numOccurences) : capacity(numOccurences){
-    cout << "constructing list of "<< numOccurences << endl;
+SortedList::SortedList(unsigned int numWords) : capacity(numWords){
+    cout << "constructing list of "<< numWords << endl;
 }
 
-void SortedList::addToList(std::pair<string,int> x) {
+void SortedList::addToList(std::pair<string, unsigned int> x) {
         
     if (list.empty()){
         list.push_front(x);
@@ -26,7 +26,7 @@ void SortedList::addToList(std::pair<string,int> x) {
         return;
     }
         
-    modifyDuplicateEntry(x);
+    modifyList(x);
         
     return;
 }
@@ -68,7 +68,7 @@ void SortedList::printListXML() const{
 
  
         
-void SortedList::modifyDuplicateEntry(std::pair<string,int> x){
+void SortedList::modifyList(std::pair<string,int> x){
 
     bool isEligible = x.second > list.begin()->second ? true : false;
     for (iterator = list.begin(); iterator != list.end(); ++iterator) {

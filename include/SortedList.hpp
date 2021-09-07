@@ -15,11 +15,11 @@
 class SortedList {
 
 public:
-    SortedList(unsigned int numOccurences);
-    void addToList(std::pair<std::string, int> x);
+    SortedList(unsigned int numWords);
+    void addToList(std::pair<std::string, unsigned int> x);
     void printListConsole() const;
-    void printListText() const;
-    void printListXML() const;
+    void printListText()    const;
+    void printListXML()     const;
     void reverseList();
 
 
@@ -28,5 +28,5 @@ private:
     int size = 0;
     std::forward_list<std::pair<std::string, int>> list;       
     std::forward_list<std::pair<std::string, int>>::iterator iterator;      
-    void modifyDuplicateEntry(std::pair<std::string, int> x);
+    void modifyList(std::pair<std::string, int> x);
 };
