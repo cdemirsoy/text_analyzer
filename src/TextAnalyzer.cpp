@@ -12,8 +12,8 @@
 using namespace std;
 using namespace boost;
 
-TextAnalyzer::TextAnalyzer(const string& fileName, const unsigned int numWords, const string outputFormat) noexcept(false) : fileName(fileName), 
-    numOccurences(numWords), myList(numWords), outputFormat(outputFormat) {
+TextAnalyzer::TextAnalyzer(const Arguments& cmdArguments) : numOccurences(cmdArguments.numWords), fileName(cmdArguments.filePath), 
+    outputFormat(cmdArguments.outputFormat), myList(cmdArguments.numWords) {
     std::cout << "Constructing\n";
 }
 

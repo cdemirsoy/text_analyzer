@@ -1,29 +1,28 @@
-#include "main_utility.hpp"
+#include "include/MainUtility.hpp"
 
 
 using namespace std;
 
 int main(int argc, char* argv[]) {
 
-    string filePath, outputFormat = "cmd";
-    unsigned int numWords = 10;
+    Arguments cmdArguments;
 
-    if (!parse_arguments(argc, argv, filePath, outputFormat, numWords)) {
-        cout << "Argument parsing did not work, terminating\n";
+    if (0 != parse_arguments(argc, argv, cmdArguments)) {
         return 1;
     }
 
-    cout << "parsed values, filePath: " << filePath 
-         << " outputFormat: " << outputFormat 
-         << " numWords: " << numWords << endl;
+    cout << "TextAnalyzer configuration:" << endl 
+         << " filePath:\t"     << cmdArguments.filePath << endl 
+         << " outputFormat:\t" << cmdArguments.outputFormat << endl 
+         << " numWords:\t"     << cmdArguments.numWords << endl;
 
 
-    if (!checkInputFile(filePath)) {
-        cout << "File not found, terminating\n";
+    if (checkInputFile(cmdArguments.filePath)) {
+        cout << "File not found, terminating!\n";
         return 1;
     }
    
-    TextAnalyzer textAnalyzer(filePath, numWords, outputFormat);
+    TextAnalyzer textAnalyzer(cmdArguments);
 
     executeAnalysis(textAnalyzer);
 

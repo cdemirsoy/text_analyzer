@@ -14,7 +14,7 @@ bool cmp_fun(std::pair<string,int> a, std::pair<string,int> b) {
    return a.second < b.second;
 }
 
-SortedList::SortedList(int numOccurences) : capacity(numOccurences){
+SortedList::SortedList(unsigned int numOccurences) : capacity(numOccurences){
     cout << "constructing list of "<< numOccurences << endl;
 }
 
@@ -67,7 +67,6 @@ void SortedList::printListXML() {
         outputFile << "</occurences>" << endl;  
     }
     outputFile.close();
-
 }
 
  

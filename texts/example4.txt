@@ -1,0 +1,81 @@
+It’s now possible for you, a random person who may have nothing to do with self-driving cars, to have a ride in one of those fully autonomous vehicles in an Uber-like (hailed) trip.
+Like any big technology, you first go directly to San Francisco.
+Then start driving south for 13 hours until you hit Pheonix.
+Waymo, formerly Google’s self-driving car team, is in public beta testing of their service, Waymo One, that allows fully autonomous ride-hailing services.
+Arguably the industry-leader, Waymo is one of few examples of real road testing on a large level, with over 80 vehicles being used.
+Such a feat begs the question: do these cars really know what’s going around in the world?!
+Driverless cars — Waymo’s included — employ an assembly of complex visual sensors and machine learning to figure out what’s happening around the car, in order to make a decision about what to do next.
+Perception: The Car’s (many) Eyes
+
+The process of perception in self-driving cars uses a combination of high-tech sensors and cameras, combined with state-of-the-art software to process and comprehend the environment around the vehicle, in real-time.
+Perception in self-driving cars is crucial to the safe and reliable operation because the data received from these processes fuel the core decision-making that figures out how the vehicle should move next; such that, the car is headed in the right direction (to its destination) and is not risking the lives of humans in, and around the car, while doing so.
+Sensors like radars (a device that uses bouncing radio waves to map the world) and LiDARs (a device that uses echoing lasers to map the world), in combination with a series of cameras, are the car’s eyes.
+Software systems, like convolutional neural networks, act as the ‘brains’ of the vehicle.
+Together, the car can piece together a detailed understanding of what’s happening in the world.
+Sensors
+Radar and Ultrasonic
+Radar, which stands for RAdio Detection And Ranging, is a device that is comprised of an antenna that emits a radio signal in a specific direction, and a radio receiver, that detects the radio signal once it has bounced off of objects in the environment.
+The idea is to calculate the time it takes for a specific emitted radio signal to return, and with a constant (approximate) speed, the distance between the antenna and the object the signal bounced off of, can be calculated.
+
+numerous targeted, finite directions for radar sensors put together, create one picture of the car’s surroundings
+This process is done in numerous different directions and the distance to their respective ‘points’ the signal bounced off of is determined. With this process occurring hundreds of times in all directions every second, vehicles can produce detailed point cloud maps of the environment and can piece together all these points to try and figure out the presence and velocity of an object.
+Radio waves have less absorption compared to light waves when echoing off of other objects, so they work really well over a longer distance. Radars are also very versatile, being able to function well in unpleasant weather — like rain, fog or light snow — and even have the ability to see in front of the car ahead of it.
+However, radar does tend to be less accurate than other sensors and definitely provide too insufficient detail for driverless cars. They lose sight of vehicles that go through a curve and is hard to differentiate or identify specific objects.
+
+on the left (LiDAR, which we’ll get into in a second), one (and more importantly, a self-driving car) can clearly make out an object shaped like a person, but on the left (radar), it’s hard to identify what’s what
+Because of their disadvantages, radars are used in very defined and narrow areas of focus (like directly in front of a vehicle, at ground level), and then the computer pieces together all the information to create a coherent picture.
+Most importantly, the points that do get recognized from radar sensors, can be tracked over time to return a very accurate reading of velocity and depth; which is absolutely crucial information for a driverless vehicle.
+Ground-Penetrating Radar
+One very unique case, that leverages the high-accuracy and targeted characteristics of radar sensors, is when these sensors are built onto the underbody of the car and are pointing down. Yes, down. As in towards the road passing by.
+
+an MIT test vehicle, equipped with ground-penetrating radar, used for wayfinding when road conditions become too tough to navigate
+During times of inclement weather (namely, heavy snow), radar sensors can be used to map a detailed point cloud map of the ground directly underneath road surfaces. Because the layout of the ground below will almost never change, it acts as a good guide to follow when cameras and forward-facing sensors can’t figure out where the car is headed.
+Cameras
+
+a video feed from camera sensors using machine learning to segment different elements in the picture based on what that object is: notice how people, cars, the road and road signs all, are different colours
+Unlike any other sensor, cameras provide the richest information about the world around the car.
+Radar and LiDAR sensors use various types of waves to map the world based on how far objects are from the sensor. In the process, these sensors can’t actually see small (but hugely important) details.
+Things like, what colour the traffic light is, or if the road sign says a top speed of 60 km/h or 90 km/h, can’t be determined, because these elements are depthless.
+Another way to put it, machines need to replicate human vision to comprehend this information — after all, navigating roads, at least for now, was centred around a human driver.
+Any self-driving car that intends to navigate roads in today's day and age, must be equipped with cameras.
+On top of understanding depthless information, camera data is also paired with readings from LiDAR and radar sensors — through a process called sensor fusion — to confirm and label objects.
+For example, a radar might identify a body of points directly in front of a vehicle, and conclude its one moving objects, with x velocity and y distance from the driverless car. However, a camera feed in the same direction will be used to confirm that this indeed is a car, and not, for example, a cyclist. This process is crucial in self-driving vehicles because knowing the difference between objects will change what decisions are made in terms of the next movements the car should make.
+
+in this image, vehicles, traffic signs and lights, as well as people are identified, labelled, tracked and segmented; all to help the driverless car make better movement decisions
+Cameras are used to identify the presence and meaning of four main attributes of the driving environment:
+Traffic light detection and classification (so the car knows if there's a traffic light and what colour it’s displaying)
+Lane detection and classification (so the car knows it must drive in a specific area, and if it’s allowed to cross those lines: double yellow or broken white)
+Road sign detection and classification (so it knows where to look for road instructions, and what exact instructions they are for a specific roadway)
+Object detection, classification and tracking (seeing what objects pose a potential threat, figuring out what it is and if it's valuable, and tracking its position)
+A video feed alone does not automatically come with labelled elements, so it’s up to the car’s computer to take in the video feed, understand what’s being looked at, detect, classify and track the important elements, process information from other sensors and sources, and make a well-informed driving decision.
+Machine learning and computer vision process are used in order to do this.
+The use of convolutional neural networks, or CNNs, is quite prominent in the processing of video feed for decision-making and path planning in autonomous vehicles.
+Check out this article to learn how CNNs work.
+LiDAR
+
+LiDAR sensors, similar to radar in the sense that they emit and receive waves and calculate the elsaped time to determine the distance, are often considered the most crucial sensor of all, for a self-driving car’s safe and reliable operation.
+Instead of radio waves, LiDAR sensors (standing for LIght Detection And Ranging) send out a lot of targeted pulses of lasers every second and create a depth map, or a point cloud map, that depicts different objects in the space around the vehicle.
+Unlike radar, however, LiDAR point cloud maps are very accurate and can be used to give a good indication about what a specific object is. And because of the low latency and real-time nature of LiDAR readings, they are relied on for a good understanding for the entire world around the car; identifying objects and tracking their velocities of movement (all of which is used to predict the future positions of these objects).
+Unfortunately, LiDAR sensors are still depth-based, and hence, cannot identify those crucial depthless elements, as we talked about earlier; like traffic lights and road signs.
+
+this weird ‘hat’ on the roof of the car spins around many times in a second. This specific sensor, the Velodyne HDL-64, outputs 1.2 million points per second and houses 64 laser emitters…AKA that’s a LOT of data.
+To attain a full 360° view of the world around it, spinning LiDARs are used. Essentially, the device comprises of a set of laser emitters arranged for the maximal field of view housed as one, and spins around hundreds of times per second to output data in real-time and keep up with changes in the environment.
+Contrary to radar, LiDAR sensors are very detailed and can keep a high resolution in their point cloud maps for a very long range of operation (think ~100m). They do, however, have trouble performing well in inclement weather.
+Hence, no matter how versatile LiDAR is, it’s absolutely crucial they be combined with cameras and GPS to gain a rich understanding of the world around.
+So What!?
+What’s promised more than ever, from the advent of self-driving vehicles, is the drastic reduction in lives lost every year from motor vehicle accidents.
+That number is pegged at 40 000 fatalities/year in the US alone.
+This, in addition to all the other benefits (read: the death of car ownership, saviour of hundreds of human-hours, etc), is conditional on one very big characteristic of the implementation of autonomous vehicles:
+THEY NEED TO BE EVERYWHERE.
+Image result for self driving car world cartoon
+the futuristic city everyone dreams is on the horizon
+For driverless vehicles to actually make a major impact on the way people live and travel (and interact with any major industry in the future), self-driving cars need to be in great abundance.
+Which means HD maps, respective engineers, and suitable smart infrastructure needs to be present.
+But the barrier bigger than all that threatens the very scalability of these vehicles, is plain and simple, the cost.
+That big LiDAR device we saw before? a cool $75 000 a pop. And that’s just to name one.
+The prices of perception sensors and computing devices need to decrease exponentially, in order for society (and companies) to reap the benefit of self-driving cars on our roads.
+So, as advanced as these sensors, camera and respective software are, major advancements need to be made in order for an affordable autonomous vehicle revolution.
+Key Takeaways:
+Sensors like radars (a device that uses bouncing radio waves to map the world) and LiDARs (a device that uses echoing lasers to map the world), in combination with a series of cameras, are the car’s way to see the world.
+Radar is a device that uses an antenna that emits a radio signal in a specific direction, and a radio receiver, that detects the radio signal once it has bounced off of objects in the environment, to calculate the distance between different objects. Similarly, LiDAR sensors do the same but use lasers.
+The prices of perception sensors and computing devices need to decrease exponentially, in order for society (and companies) to reap the benefit of self-driving cars on our roads.

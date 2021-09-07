@@ -2,14 +2,20 @@
 #include <string>
 #include <fstream>
 #include <vector>
-#include<forward_list>
-#include<map>
+#include <forward_list>
+#include <map>
 #include "include/SortedList.hpp"
+
+struct Arguments {
+    std::string filePath;
+    std::string outputFormat{"cmd"};
+    unsigned int numWords{10};
+};
 
 class TextAnalyzer {
 
 public:
-    TextAnalyzer(const std::string& fileName, const unsigned int numWords, const std::string outputFormat);
+    TextAnalyzer(const Arguments& cmdArguments);
     void procesText();  
     void printText();
     void printSmileys();
@@ -22,9 +28,9 @@ private:
     unsigned int numOfSmileyInLine = 0;
     unsigned int numOccurences;
     std::vector <std::pair<int, int>> smileyPositions;
-    std::string fileName;
+    const std::string fileName;
     std::string currentWord;
-    std::string outputFormat;
+    const std::string outputFormat;
     std::map<std::string, int> wordMap;
     SortedList myList;
 

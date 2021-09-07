@@ -4,7 +4,7 @@
 class SortedList {
 
 public:
-    SortedList(int numOccurences);
+    SortedList(unsigned int numOccurences);
     void addToList(std::pair<std::string, int> x);
     void printListConsole();
     void printListText();
@@ -12,7 +12,7 @@ public:
 
 
 private:
-    const int capacity;
+    const unsigned int capacity;
     int size = 0;
     std::forward_list<std::pair<std::string, int>> list;       
     std::forward_list<std::pair<std::string, int>>::iterator iterator;      
