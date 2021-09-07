@@ -68,7 +68,7 @@ void SortedList::printListXML() const{
 
  
         
-void SortedList::modifyList(std::pair<string,int> x){
+void SortedList::modifyList(std::pair<string, unsigned int> x){
 
     bool isEligible = x.second > list.begin()->second ? true : false;
     for (iterator = list.begin(); iterator != list.end(); ++iterator) {

@@ -12,7 +12,7 @@
  * *   position of the smiley is saved into the list. If word is not a smiley and a valid word, it is added to the list.
  * 
  */
-class SortedList {
+class SortedList final {
 
 public:
     SortedList(unsigned int numWords);
@@ -25,8 +25,8 @@ public:
 
 private:
     const unsigned int capacity;
-    int size = 0;
+    unsigned int size = 0;
     std::forward_list<std::pair<std::string, int>> list;       
     std::forward_list<std::pair<std::string, int>>::iterator iterator;      
-    void modifyList(std::pair<std::string, int> x);
+    void modifyList(std::pair<std::string, unsigned int> x);
 };
