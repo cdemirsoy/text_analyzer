@@ -11,7 +11,7 @@ set(CMAKE_CXX_OUTPUT_EXTENSION_REPLACE ON)
 #set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR})
 
 # Create OBJECT_DIR variable
-set(OBJECT_DIR build/CMakeFiles/TextAnalyzer.dir)
+set(OBJECT_DIR ${CMAKE_SOURCE_DIR}/build/CMakeFiles/TextAnalyzer.dir)
 message("-- Object files will be output to: ${OBJECT_DIR}")
 
 
@@ -27,8 +27,10 @@ add_custom_target(gcov
     )
 add_custom_command(TARGET gcov
     COMMAND echo "=================== GCOV ===================="
-    COMMAND gcov -b ${CMAKE_SOURCE_DIR}/*.cpp -o ${OBJECT_DIR}
-        | grep -A 5 "Adder.cpp" > CoverageSummary.tmp
+    COMMAND gcov -b ${CMAKE_SOURCE_DIR}/src/MainUtility.cpp -o ${CMAKE_SOURCE_DIR}/build/src/CMakeFiles/TextAnalyzer_lib.dir/MainUtility.gcno
+        | grep -A 5 "MainUtility.cpp" > CoverageSummary.tmp
+    COMMAND echo "working?"
+
     COMMAND cat CoverageSummary.tmp
     COMMAND echo "-- Coverage files have been output to ${CMAKE_BINARY_DIR}/coverage"
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/coverage  # Need separate command for this line
