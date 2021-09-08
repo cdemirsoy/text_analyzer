@@ -10,3 +10,8 @@ include_directories(${PROJECT_SOURCE_DIR}/include)
 add_executable(${BINARY}_run ${SOURCES_FILES} ${HEADER_FILES})
 
 add_library(${BINARY}_lib STATIC ${SOURCES_FILES} ${HEADER_FILES})
+
+add_custom_command(TARGET TextAnalyzer_run POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:TextAnalyzer_run> ${PROJECT_SOURCE_DIR}/bin/TextAnalyzer_run
+    COMMENT "Created ${PROJECT_SOURCE_DIR}/bin/TextAnalyzer_run"
+)

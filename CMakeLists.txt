@@ -6,14 +6,13 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_FLAGS "-g -O0 -Wall -fprofile-arcs -ftest-coverage")
 set(CMAKE_CXX_OUTPUT_EXTENSION_REPLACE ON)
 
-#set(CMAKE_BINARY_DIR ${CMAKE_SOURCE_DIR}/bin)
+set(CMAKE_OUTPUT ${CMAKE_SOURCE_DIR}/bin)
 #set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
 #set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR})
 
 # Create OBJECT_DIR variable
 set(OBJECT_DIR ${CMAKE_SOURCE_DIR}/build/CMakeFiles/TextAnalyzer.dir)
 message("-- Object files will be output to: ${OBJECT_DIR}")
-
 
 add_subdirectory(src)
 add_subdirectory(tst)
@@ -23,7 +22,7 @@ add_subdirectory(lib/googletest)
 add_custom_target(gcov
     COMMAND mkdir -p coverage
     COMMAND ${CMAKE_MAKE_PROGRAM} test
-    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/build
     )
 add_custom_command(TARGET gcov
     COMMAND echo "=================== GCOV ===================="
@@ -53,6 +52,7 @@ enable_testing()
 
 #add_test(output_test ${CMAKE_CURRENT_BINARY_DIR}/TextAnalyzer_run)
 #set_tests_properties(output_test PROPERTIES PASS_REGULAR_EXPRESSION "0;5;10")
+
 
 
 add_test(output_test ${CMAKE_CURRENT_BINARY_DIR}/tst/TextAnalyzer_test)

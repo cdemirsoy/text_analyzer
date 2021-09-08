@@ -15,3 +15,8 @@ add_executable(${BINARY} ${SOURCES_FILES} ${HEADER_FILES})
 add_test(NAME ${BINARY} COMMAND ${BINARY})
 
 target_link_libraries(${BINARY} PUBLIC ${CMAKE_PROJECT_NAME}_lib gtest)
+
+add_custom_command(TARGET TextAnalyzer_test POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:TextAnalyzer_test> ${PROJECT_SOURCE_DIR}/bin/TextAnalyzer_test
+    COMMENT "Created ${PROJECT_SOURCE_DIR}/bin/TextAnalyzer_test"
+)
