@@ -18,9 +18,7 @@ bool cmp_fun(std::pair<std::string, unsigned int> a, std::pair<std::string, unsi
         return a.first < b.first;
 }
 
-SortedList::SortedList(unsigned int numWords) : capacity(numWords){
-    cout << "constructing list of "<< numWords << endl;
-}
+SortedList::SortedList(unsigned int numWords) : capacity(numWords) {}
 
 void SortedList::addToList(std::pair<string, unsigned int> occurencePair) {
         
@@ -34,10 +32,11 @@ void SortedList::addToList(std::pair<string, unsigned int> occurencePair) {
 }
     
 void SortedList::printListConsole() const{
-    cout << "Occurence list:" << endl;
-    
+    cout << "Occurence list:" << endl << endl;
+
     for (const auto& pair : list)
-        cout << "  " << pair.first << "\t" << pair.second << endl;
+        cout << "\t" << pair.first << "\t\t" << pair.second << endl;
+    cout << endl;
 }
 
 void SortedList::printListText() const{
@@ -56,7 +55,6 @@ void SortedList::printListText() const{
     else {
         cout << "Could create a text file" << endl;
     }
-
 }
 
 void SortedList::printListXML() const{

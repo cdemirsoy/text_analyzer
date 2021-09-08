@@ -11,10 +11,10 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    cout << "TextAnalyzer configuration:" << endl 
-         << " filePath:\t"     << cmdArguments.filePath << endl 
-         << " outputFormat:\t" << cmdArguments.outputFormat << endl 
-         << " numWords:\t"     << cmdArguments.numWords << endl;
+    cout << endl << "TextAnalyzer configuration:" << endl 
+                 << " filePath:\t"     << cmdArguments.filePath << endl 
+                 << " outputFormat:\t" << cmdArguments.outputFormat << endl 
+                 << " numWords:\t"     << cmdArguments.numWords << endl <<endl;
 
 
     if (checkInputFile(cmdArguments.filePath)) {

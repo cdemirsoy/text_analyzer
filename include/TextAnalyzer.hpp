@@ -7,7 +7,6 @@
 
 /**
  * Structure that contains the parsed command line arguments.
- * 
  */
 struct Arguments {
     std::string filePath;
@@ -22,6 +21,7 @@ struct Arguments {
  * *   File is read line by line, and then the individual words within a line checked whether it is a word or smiley. If a smiley, 
  * *   position of the smiley is saved into the list. If word is not a smiley and a valid word, it is added to the list.
  * 
+ * * ::printText: Utility to print the word occurences list, in the intended format.
  */
 class TextAnalyzer final {
 

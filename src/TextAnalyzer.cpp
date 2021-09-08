@@ -13,14 +13,11 @@ using namespace std;
 using namespace boost;
 
 TextAnalyzer::TextAnalyzer(const Arguments& cmdArguments) : numWords(cmdArguments.numWords), fileName(cmdArguments.filePath), 
-    outputFormat(cmdArguments.outputFormat), myList(cmdArguments.numWords) {
-    std::cout << "Constructing\n";
-}
+    outputFormat(cmdArguments.outputFormat), myList(cmdArguments.numWords) {}
 
 void TextAnalyzer::procesText() {
 
     string line, currentWord;
-
     fileStream.open(fileName, ifstream::in);
 
     if (fileStream.is_open()) {
@@ -34,8 +31,9 @@ void TextAnalyzer::procesText() {
                     if (currentWord.length()==0)
                         continue;
                 
-                    if (wordMap.find(currentWord) == wordMap.end()) 
+                    if (wordMap.find(currentWord) == wordMap.end()) {
                         wordMap[currentWord] = 1; 
+                    }
                     else {
                         wordMap[currentWord]++;
                     }
@@ -56,23 +54,19 @@ void TextAnalyzer::procesText() {
 }
     
 void TextAnalyzer::printText() const{ 
-    cout << "printtext called\n";
+
     if (!outputFormat.compare("cmd")){
-        cout << "printing to console\n";
         myList.printListConsole();
     }
     else if (!outputFormat.compare("txt")){
-        cout << "printing to txt\n";
         myList.printListText();
     }
     else if (!outputFormat.compare("xml")){
-        cout << "printing to xml\n";
         myList.printListXML();
     }
     else {
         cout << "unsupported outputFormat\n";
     }
-
 }
 
 void TextAnalyzer::printSmileys() const{        
@@ -107,6 +101,7 @@ bool TextAnalyzer::isSmiley (string& line, const string& currentString) {
         numOfSmileyInLine++;
         return true;
     }
-    else 
+    else {
         return false;
+    }
 }
