@@ -49,5 +49,9 @@ add_custom_target(scrub
 # Testing
 enable_testing()
 
-add_test(output_test ${CMAKE_CURRENT_BINARY_DIR}/TextAnalyzer_run)
+#add_test(output_test ${CMAKE_CURRENT_BINARY_DIR}/TextAnalyzer_run)
+#set_tests_properties(output_test PROPERTIES PASS_REGULAR_EXPRESSION "0;5;10")
+
+
+add_test(output_test ${CMAKE_CURRENT_BINARY_DIR}/tst/TextAnalyzer_test)
 set_tests_properties(output_test PROPERTIES PASS_REGULAR_EXPRESSION "0;5;10")
