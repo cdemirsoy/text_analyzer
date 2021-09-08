@@ -56,7 +56,7 @@ class SortedList final {
 public:
     SortedList(unsigned int numWords);
     void addToList(std::pair<std::string, unsigned int> occurencePair);
-    void printListConsole() const;
+    void printListConsole(std::vector<std::pair<unsigned int, unsigned int>> smileyPositions) const;
     void printListText()    const;
     void printListXML()     const;
     void reverseList();

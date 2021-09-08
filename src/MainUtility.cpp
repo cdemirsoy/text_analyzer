@@ -84,7 +84,6 @@ int parse_arguments(const int& argc, char* argv[], Arguments& cmdArguments){
 void executeAnalysis(TextAnalyzer& textAnalyzer) {
     textAnalyzer.procesText();
     textAnalyzer.printText();
-    textAnalyzer.printSmileys();
 }
 
 int checkInputFile (const string& filePath) {

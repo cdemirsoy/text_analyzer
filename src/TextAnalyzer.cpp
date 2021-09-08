@@ -56,7 +56,7 @@ void TextAnalyzer::procesText() {
 void TextAnalyzer::printText() const{ 
 
     if (!outputFormat.compare("cmd")){
-        myList.printListConsole();
+        myList.printListConsole(smileyPositions);
     }
     else if (!outputFormat.compare("txt")){
         myList.printListText();

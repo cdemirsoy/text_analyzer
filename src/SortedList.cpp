@@ -31,11 +31,18 @@ void SortedList::addToList(std::pair<string, unsigned int> occurencePair) {
     }
 }
     
-void SortedList::printListConsole() const{
+void SortedList::printListConsole(std::vector<std::pair<unsigned int, unsigned int>> smileyPositions) const{
+    
     cout << "Occurence list:" << endl << endl;
-
     for (const auto& pair : list)
         cout << "\t" << pair.first << "\t\t" << pair.second << endl;
+
+    cout << endl;
+
+    cout << "Smiley positions: (row, col)" << endl << endl;
+    for (const auto& pair : smileyPositions)
+        cout << "\t(" << pair.first << ", " << pair.second << ")" << endl;
+
     cout << endl;
 }
 
