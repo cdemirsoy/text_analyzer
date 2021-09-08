@@ -83,12 +83,25 @@ void SortedList::printListXML(std::vector<std::pair<unsigned int, unsigned int>>
         outputFile << "<occurences>" << endl; 
 
         for (const auto& pair : list) {
-            outputFile << "\t<rank id="<< rank-- <<">" << endl;  
+            outputFile << "\t<rank id=\""<< rank-- <<"\">" << endl;
             outputFile << "\t\t<word>" << pair.first << "</word>" << endl;
-            outputFile << "\t\t<frequency>" << pair.second << "</frequency>" << endl;  
+            outputFile << "\t\t<frequency>" << pair.second << "</frequency>" << endl;
+            outputFile << "\t</rank>" << endl;  
         }
 
-        outputFile << "</occurences>" << endl;  
+        outputFile << "</occurences>" << endl; 
+
+        outputFile << "<positions>" << endl;
+        int cnt = 0;
+        for (const auto& pair : smileyPositions) {
+            outputFile << "\t<position id=\""<< cnt++ <<"\">" << endl;  
+            outputFile << "\t\t<row>" << pair.first << "</row>"  << endl;
+            outputFile << "\t\t<col>" << pair.second << "</col>"  << endl;
+            outputFile << "\t</position>" << endl;  
+        }
+
+        outputFile << "</positions>" << endl;
+
         outputFile.close();
     }
 }
