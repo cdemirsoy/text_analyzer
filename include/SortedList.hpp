@@ -51,7 +51,7 @@ bool cmp_fun(std::pair<std::string, unsigned int> a, std::pair<std::string, unsi
  * *
  * *
  */
-class SortedList final {
+class SortedList {
 
 public:
     SortedList(unsigned int numWords);
@@ -61,9 +61,10 @@ public:
     void printListXML(std::vector<std::pair<unsigned int, unsigned int>> smileyPositions)     const;
     void reverseList();
 
-private:
-    const unsigned int capacity;
-    unsigned int size = 0;
+
+protected:
     std::forward_list<std::pair<std::string, unsigned int>> list;       
+    unsigned int size = 0;
+    const unsigned int capacity;
     void modifyList(std::pair<std::string, unsigned int> occurencePair);
 };
