@@ -4,7 +4,7 @@ file(GLOB_RECURSE TEST_SOURCES LIST_DIRECTORIES false *.h *.hpp *.cpp)
 
 set(SOURCES ${TEST_SOURCES})
 
-set(SOURCES_FILES ${PROJECT_SOURCE_DIR}/test/main.cpp ${PROJECT_SOURCE_DIR}/test/test.cpp)
+set(SOURCES_FILES ${PROJECT_SOURCE_DIR}/tst/main.cpp ${PROJECT_SOURCE_DIR}/tst/tst.cpp)
 set(HEADER_FILES  ${PROJECT_SOURCE_DIR}/include/MainUtility.hpp ${PROJECT_SOURCE_DIR}/include/SortedList.hpp ${PROJECT_SOURCE_DIR}/include/TextAnalyzer.hpp ${PROJECT_SOURCE_DIR}/include/Formula.h)
 
 include_directories(${PROJECT_SOURCE_DIR}/include)
