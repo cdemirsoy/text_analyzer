@@ -23,7 +23,7 @@ struct Arguments {
  * 
  * * ::printText: Utility to print the word occurences list, in the intended format.
  */
-class TextAnalyzer final {
+class TextAnalyzer {
 
 public:
     TextAnalyzer(const Arguments& cmdArguments);
@@ -44,6 +44,7 @@ private:
     SortedList myList;
     std::ifstream fileStream;
 
+protected:
     std::string sanitize(std::string& toSanitize) const;
     bool isSmiley (std::string& line, const std::string& currentString);
 };
