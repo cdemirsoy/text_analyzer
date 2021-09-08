@@ -46,16 +46,24 @@ void SortedList::printListConsole(std::vector<std::pair<unsigned int, unsigned i
     cout << endl;
 }
 
-void SortedList::printListText() const{
+void SortedList::printListText(std::vector<std::pair<unsigned int, unsigned int>> smileyPositions) const{
     ofstream outputFile;
     outputFile.open("analysis.txt", ofstream::out);
 
     if (outputFile.is_open()) { 
 
-        outputFile << "Occurence list:" << endl;
+        outputFile << "Occurence list:" << endl << endl;
 
         for (const auto& pair : list)
-            outputFile << "  " << pair.first << "\t" << pair.second << endl;
+            outputFile << "\t" << pair.first << "\t\t" << pair.second << endl;
+
+        outputFile << endl;
+
+        outputFile << "Smiley positions: (row, col)" << endl << endl;
+        for (const auto& pair : smileyPositions)
+            outputFile << "\t(" << pair.first << ", " << pair.second << ")" << endl;
+
+        outputFile << endl;
 
         outputFile.close();
     }
@@ -64,7 +72,7 @@ void SortedList::printListText() const{
     }
 }
 
-void SortedList::printListXML() const{
+void SortedList::printListXML(std::vector<std::pair<unsigned int, unsigned int>> smileyPositions) const{
     ofstream outputFile;
     outputFile.open("analysis.xml", ofstream::out);
     unsigned int rank = size;

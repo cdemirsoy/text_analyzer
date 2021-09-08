@@ -59,10 +59,10 @@ void TextAnalyzer::printText() const{
         myList.printListConsole(smileyPositions);
     }
     else if (!outputFormat.compare("txt")){
-        myList.printListText();
+        myList.printListText(smileyPositions);
     }
     else if (!outputFormat.compare("xml")){
-        myList.printListXML();
+        myList.printListXML(smileyPositions);
     }
     else {
         cout << "unsupported outputFormat\n";
