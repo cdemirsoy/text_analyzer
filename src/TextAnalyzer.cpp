@@ -6,8 +6,8 @@
 #include <vector>
 #include <forward_list>
 #include <boost/algorithm/string.hpp>
-#include "include/TextAnalyzer.hpp"
-#include "include/SortedList.hpp"
+#include "TextAnalyzer.hpp"
+#include "SortedList.hpp"
 
 using namespace std;
 using namespace boost;

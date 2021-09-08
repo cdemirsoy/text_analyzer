@@ -3,7 +3,7 @@
 #include <fstream>
 #include <string>
 #include "string.h"
-#include "include/TextAnalyzer.hpp"
+#include "TextAnalyzer.hpp"
 
 using namespace std;
 

@@ -5,7 +5,7 @@
 #include <vector>
 #include <forward_list>
 #include <boost/algorithm/string.hpp>
-#include "include/SortedList.hpp"
+#include "SortedList.hpp"
 
 using namespace std;
 using namespace boost;

@@ -3,7 +3,7 @@
 #include <fstream>
 #include <vector>
 #include <map>
-#include "include/SortedList.hpp"
+#include "SortedList.hpp"
 
 /**
  * Structure that contains the parsed command line arguments.
