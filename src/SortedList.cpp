@@ -56,7 +56,7 @@ void SortedList::printListText(std::vector<std::pair<unsigned int, unsigned int>
         outputFile << "Occurence list:" << endl << endl;
 
         for (const auto& pair : list)
-            outputFile << "\t" << pair.first << "\t\t" << pair.second << endl;
+            outputFile << "  " << pair.first << "\t\t\t" << pair.second << endl;
 
         outputFile << endl;
 

@@ -61,5 +61,4 @@ TEST(ParseArguments, numWordsRangeCheck) {
 TEST(CheckInputFile, checkFile) {
     const string filePath = "UNKNOWN_FILE";
     ASSERT_EQ(checkInputFile(filePath), 1);
-
 }
