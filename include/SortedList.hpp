@@ -64,6 +64,7 @@ public:
     void printListXML(std::vector<std::pair<unsigned int, unsigned int>> smileyPositions)     const;
     void reverseList();
     void setCapacity(unsigned int);
+    std::forward_list<std::pair<std::string, unsigned int>> getList();
 
 
 protected:

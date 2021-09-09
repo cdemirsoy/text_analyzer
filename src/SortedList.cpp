@@ -138,3 +138,7 @@ void SortedList::reverseList(){
 void SortedList::setCapacity(unsigned int val) {
     capacity = val;
 }
+
+forward_list<std::pair<std::string, unsigned int>> SortedList::getList() {
+    return list;
+}

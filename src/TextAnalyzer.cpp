@@ -122,4 +122,8 @@ bool TextAnalyzer::isSmiley (const string& currentString) const {
 
  pair<unsigned int, unsigned int> TextAnalyzer::getPositionList(unsigned int index) const {
         return smileyPositions[index];
-    } 
+} 
+
+forward_list<std::pair<std::string, unsigned int>> TextAnalyzer::getSortedList() {
+    return myList.getList();
+}

@@ -48,9 +48,9 @@ public:
     bool processIfSmiley (std::string& line, const std::string& currentString);
     bool isSmiley (const std::string& currentString) const;
     std::pair<unsigned int, unsigned int> getPositionList(unsigned int index) const;
-
-protected:
     std::string sanitize (std::string& toSanitize) const;
+    std::forward_list<std::pair<std::string, unsigned int>> getSortedList();
     
+protected:
     std::vector<std::pair<unsigned int, unsigned int>> smileyPositions;
 };
