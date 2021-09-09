@@ -18,7 +18,8 @@ bool cmp_fun(std::pair<std::string, unsigned int> a, std::pair<std::string, unsi
         return a.first < b.first;
 }
 
-SortedList::SortedList(unsigned int numWords) : capacity(numWords) {}
+SortedList::SortedList() {}
+SortedList::~SortedList() {}
 
 void SortedList::addToList(std::pair<string, unsigned int> occurencePair) {
         
@@ -132,4 +133,8 @@ void SortedList::modifyList(std::pair<string, unsigned int> occurencePair){
 
 void SortedList::reverseList(){
     list.reverse();
+}
+
+void SortedList::setCapacity(unsigned int val) {
+    capacity = val;
 }

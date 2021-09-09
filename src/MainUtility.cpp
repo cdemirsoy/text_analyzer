@@ -65,8 +65,9 @@ int parse_arguments(const int& argc, char* argv[], Arguments& cmdArguments){
             if (i + 1 < argc) {
                 ++i;
                 cmdInput = atoi(argv[i]);
-                if (cmdInput < 0 || cmdInput > 40) {
-                        cout << "Number of words to list must be between 0 and 40, using default number 10." << endl;
+                if (cmdInput <= 0 || cmdInput > 40) {
+                        cout << "Number of words to list must be between 0 and 40" << endl;
+                        return -1;
                 }
                 else {
                     cmdArguments.numWords = cmdInput;

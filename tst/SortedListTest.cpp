@@ -11,13 +11,14 @@
 using namespace std;
 using namespace boost;
 
-bool isEqualPair(std::pair<std::string, unsigned int> a, std::pair<std::string, unsigned int> b) {
+static bool isEqualPair(std::pair<std::string, unsigned int> a, std::pair<std::string, unsigned int> b) {
 
     if ((a.second == b.second) && (a.first ==  b.first))
         return true;
     else
         return false;
 }
+
 class MockList : public SortedList {
 
 public:
@@ -36,7 +37,8 @@ public:
 
 
 TEST(SortedList, addSameWord) {
-    MockList sortedList(10U);
+    MockList sortedList;
+    sortedList.setCapacity(10U);
     ASSERT_EQ(sortedList.getCapacity(), 10U);
     sortedList.addToList(std::make_pair("SomeWord", 1));
     ASSERT_EQ(sortedList.getSize(), 1U);
@@ -47,7 +49,8 @@ TEST(SortedList, addSameWord) {
 }
 
 TEST(SortedList, addDifferentWords) {
-    MockList sortedList(10U);
+    MockList sortedList;
+    sortedList.setCapacity(10U);
     ASSERT_EQ(sortedList.getCapacity(), 10U);
     sortedList.addToList(std::make_pair("SomeWord1", 1));
     ASSERT_EQ(sortedList.getSize(), 1U);
@@ -58,7 +61,8 @@ TEST(SortedList, addDifferentWords) {
 }
 
 TEST(SortedList, modifyList) {
-    MockList sortedList(3U);
+    MockList sortedList;
+    sortedList.setCapacity(3);
     ASSERT_EQ(sortedList.getCapacity(), 3U);
     std::pair<string, int> pair1 ("SomeWord1",1);
     std::pair<string, int> pair2 ("SomeWord2", 100);

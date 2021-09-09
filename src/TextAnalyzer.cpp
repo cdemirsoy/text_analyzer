@@ -12,8 +12,13 @@
 using namespace std;
 using namespace boost;
 
+
 TextAnalyzer::TextAnalyzer(const Arguments& cmdArguments) : numWords(cmdArguments.numWords), fileName(cmdArguments.filePath), 
-    outputFormat(cmdArguments.outputFormat), myList(cmdArguments.numWords) {}
+    outputFormat(cmdArguments.outputFormat) { 
+        //cout << "constructing TextAnalyzer\n";
+        myList.setCapacity(numWords);
+    }
+TextAnalyzer::~TextAnalyzer() {}
 
 void TextAnalyzer::procesText() {
 
@@ -26,7 +31,7 @@ void TextAnalyzer::procesText() {
                     
             while(ls >> currentWord) {
 
-                if (!isSmiley(line, currentWord)) {
+                if (!processIfSmiley(line, currentWord)) {
                     currentWord = sanitize(currentWord);
                     if (currentWord.length()==0)
                         continue;
@@ -86,9 +91,9 @@ string TextAnalyzer::sanitize(string& toSanitize) const {
     return sanitized;
 }
 
-bool TextAnalyzer::isSmiley (string& line, const string& currentString) {
+bool TextAnalyzer::processIfSmiley (string& line, const string& currentString) {
     
-    if (currentString[0] == ':') {
+    if (isSmiley(currentString)) {
         //cout << "line beg: " << line << endl;
         unsigned int currentColumn = line.find(':');
         //cout << "curcol: " << currentColumn << endl;
@@ -105,3 +110,16 @@ bool TextAnalyzer::isSmiley (string& line, const string& currentString) {
         return false;
     }
 }
+
+bool TextAnalyzer::isSmiley (const string& currentString) const {
+    if (currentString[0] == ':') {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+ pair<unsigned int, unsigned int> TextAnalyzer::getPositionList(unsigned int index) const {
+        return smileyPositions[index];
+    } 

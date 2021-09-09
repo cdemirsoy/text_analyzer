@@ -1,5 +1,7 @@
 #pragma once 
 #include<forward_list>
+#include <vector>
+
 
 /**
  * Custom comparator to sort occurence list with given pairs, which is a forward list. If occurences are equal, 
@@ -54,17 +56,19 @@ bool cmp_fun(std::pair<std::string, unsigned int> a, std::pair<std::string, unsi
 class SortedList {
 
 public:
-    SortedList(unsigned int numWords);
+    SortedList();
+    ~SortedList();
     void addToList(std::pair<std::string, unsigned int> occurencePair);
     void printListConsole(std::vector<std::pair<unsigned int, unsigned int>> smileyPositions) const;
     void printListText(std::vector<std::pair<unsigned int, unsigned int>> smileyPositions)    const;
     void printListXML(std::vector<std::pair<unsigned int, unsigned int>> smileyPositions)     const;
     void reverseList();
+    void setCapacity(unsigned int);
 
 
 protected:
     std::forward_list<std::pair<std::string, unsigned int>> list;       
     unsigned int size = 0;
-    const unsigned int capacity;
+    unsigned int capacity=10;
     void modifyList(std::pair<std::string, unsigned int> occurencePair);
 };

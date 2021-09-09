@@ -28,7 +28,7 @@ TEST(ParseArguments, outputFormatNotGiven) {
     Arguments cmdArguments;
     char *args[] = {"binary_name", "-f", "SOME_FILE", "-o"};
     ASSERT_EQ(parse_arguments(4, args, cmdArguments), -1);
-    args[3] = {"--outputFormat"};
+    args[3] = {"--outputformat"};
     ASSERT_EQ(parse_arguments(4, args, cmdArguments), -1);
 }
 
@@ -53,10 +53,10 @@ TEST(ParseArguments, numWordsRangeCheck) {
     Arguments cmdArguments;
     char *args[] = {"binary_name", "-f", "SOME_FILE", "-n", "100"};
     ASSERT_EQ(parse_arguments(5, args, cmdArguments), -1);
-    args[5] = {"0"};
-    ASSERT_EQ(parse_arguments(4, args, cmdArguments), -1);
-    args[5] = {"20"};
-    ASSERT_EQ(parse_arguments(4, args, cmdArguments), 0);
+    args[4] = {"0"};
+    ASSERT_EQ(parse_arguments(5, args, cmdArguments), -1);
+    args[4] = {"20"};
+    ASSERT_EQ(parse_arguments(5, args, cmdArguments), 0);
 }
 
 TEST(CheckInputFile, checkFile) {

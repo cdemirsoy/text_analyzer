@@ -27,6 +27,7 @@ class TextAnalyzer {
 
 public:
     TextAnalyzer(const Arguments& cmdArguments);
+    ~TextAnalyzer();
     void procesText();
     void printSmileys() const;  
     void printText()    const;
@@ -40,11 +41,16 @@ private:
     const std::string outputFormat;
 
     std::map<std::string, unsigned int> wordMap;
-    std::vector<std::pair<unsigned int, unsigned int>> smileyPositions;
     SortedList myList;
     std::ifstream fileStream;
 
+public:
+    bool processIfSmiley (std::string& line, const std::string& currentString);
+    bool isSmiley (const std::string& currentString) const;
+    std::pair<unsigned int, unsigned int> getPositionList(unsigned int index) const;
+
 protected:
-    std::string sanitize(std::string& toSanitize) const;
-    bool isSmiley (std::string& line, const std::string& currentString);
+    std::string sanitize (std::string& toSanitize) const;
+    
+    std::vector<std::pair<unsigned int, unsigned int>> smileyPositions;
 };
