@@ -35,7 +35,6 @@ public:
 
 };
 
-
 TEST(SortedList, addSameWord) {
     MockList sortedList;
     sortedList.setCapacity(10U);
@@ -81,7 +80,6 @@ TEST(SortedList, modifyList) {
     std::forward_list list = sortedList.getList();
 
     ASSERT_EQ(isEqualPair(*(list.begin()), pair1), false);
-
     ASSERT_EQ(isEqualPair(*(list.begin()), pair2), true);
     list.pop_front();
     ASSERT_EQ(isEqualPair(*(list.begin()), pair3), true);
@@ -90,4 +88,3 @@ TEST(SortedList, modifyList) {
 
 }
     
-

@@ -74,11 +74,6 @@ void TextAnalyzer::printText() const{
     }
 }
 
-void TextAnalyzer::printSmileys() const{        
-    for (auto a : smileyPositions)
-        cout << "row: " << a.first << " col: " << a.second << endl;
-}
-
 string TextAnalyzer::sanitize(string& toSanitize) const {
     algorithm::to_lower(toSanitize);
     string sanitized = "";

@@ -9,10 +9,10 @@ using namespace std;
 
 void show_usage(std::string name)
 {
-    std::cerr << "Usage: " << name << " <option(s)> --filepath PathToTheFile --outputformat OutputFormat --numwords NumWords\n"
+    std::cerr << "\nUsage: " << name << " <option(s)> --filepath PathToTheFile --outputformat OutputFormat --numwords NumWords\n"
               << "\nOptions:\n"
-              << "\t-h, --help\t\t\t\tShow this help message\n\n\n"
-              << "\t-f, --filename\t\tFILENAME\tSpecify the path of the input file\n"
+              << "\t-h, --helpt\t\tHELP\t\tShow this help message\n\n\n"
+              << "\t-f, --filepath\t\tFILEPATH\tSpecify the path of the input file\n"
               << "\t-o, --outputformat\tOUTPUTFORMAT\tSpecify the format of the output file e.g., xml, txt, cmd (cmd by default)\n"
               << "\t-n, --numwords\t\tNUMWORDS\tSpecify the number of most frequent words to list (10 by default)\n"
               << std::endl;
@@ -31,7 +31,8 @@ int parse_arguments(const int& argc, char* argv[], Arguments& cmdArguments){
     }
 
     if (strcmp(argv[1], "-f") == 0 || strcmp(argv[1], "--filepath") == 0) {
-        cmdArguments.filePath = argv[2];
+        if (argc>2)
+            cmdArguments.filePath = argv[2];
     } 
     else {
         cerr << "First argument MUST be the filepath, please revise your input." << endl;

@@ -29,41 +29,12 @@ static bool isEqualPairOccurence(std::pair<std::string, unsigned int> a, std::pa
         return false;
 }
 
-
-
-
-
-class MockList : public TextAnalyzer {
-
-public:
-    using TextAnalyzer::TextAnalyzer;
-
-    /*
-    bool isSmileyTest (const std::string& currentString) const {
-        return isSmiley(currentString);
-    }
-
-    bool processIfSmileyTest (std::string& line, const std::string& currentString) {
-        return processIfSmiley(line, currentString);
-    }
-    
-    pair<unsigned int, unsigned int> getPositionList(unsigned int index) const {
-        return smileyPositions[index];
-    } 
-    */
-  
-
-};
-
-
-
 TEST(TextAnalyzer, isSmiley) {
     Arguments cmdArguments;
     cmdArguments.filePath = "ss";
 
     cout << "vals: " << cmdArguments.numWords << " " << cmdArguments.outputFormat << " " << cmdArguments.filePath << endl;
     TextAnalyzer textAnalyzer(cmdArguments);
-    
     
     string smiley1 {":)"};
     string smiley2 {":-)"};
@@ -75,9 +46,7 @@ TEST(TextAnalyzer, isSmiley) {
     ASSERT_EQ(textAnalyzer.isSmiley(smiley3), true);
     ASSERT_EQ(textAnalyzer.isSmiley(smiley4), false);
     
-    cout << "finishing\n";
 }
-
 
 TEST(TextAnalyzer, isSmileyAndCheckPositions) {
     Arguments cmdArguments;
@@ -139,7 +108,6 @@ TEST(TextAnalyzer, stringSanitize) {
         0);
 }
 
-
 TEST(TextAnalyzer, processText) {
     Arguments cmdArguments;
     
@@ -155,16 +123,10 @@ TEST(TextAnalyzer, processText) {
 
     forward_list<std::pair<std::string, unsigned int>> myList = textAnalyzer.getSortedList();
 
-
     std::pair<std::string, unsigned int> result1 ("bmw", 2);
     std::pair<std::string, unsigned int> result2 ("audi", 2);
     std::pair<std::string, unsigned int> result3 ("mustang", 1);
     std::pair<std::string, unsigned int> result4 ("mercedes", 1);
-
-
-  
-    for (auto a: myList)
-        std::cout << "val: " << a.first << " " << a.second << std::endl;
 
     auto a = myList.begin();
 
@@ -183,7 +145,6 @@ TEST(TextAnalyzer, processText) {
     ASSERT_EQ(
         isEqualPairOccurence(*(++a), result4), true
     );
-
 
 }
 
