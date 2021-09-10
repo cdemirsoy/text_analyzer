@@ -1,4 +1,4 @@
-1. Build instructions
+Build instructions
 
 - Go to the root of the repository.
 - run mkdir build && cd build && cmake .. && make && make gcov
